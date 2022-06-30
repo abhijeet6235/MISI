@@ -1,0 +1,94 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/popper.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/bootstrap.min.css' %}">
+
+<script src="{% static '/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static '/DataTables/datatables.min.js' %}"></script>
+<script src="{% static '/js/dataTables.bootstrap4.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static '/DataTables/datatables.min.css' %}" />
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="{% static '/js/select2.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/select2.min.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="{% static '/js/select2.min.js' %}"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{% static 'js/timepicker.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}" />
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+<!-- Select2 CSS --> 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+
+
+<!-- Select2 JS --> 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<body>
+    <center><h3>Draft Inspections</h3></center>
+    <div class="container">
+        <table id="mytable" class="table table-striped table-bordered table-sm " cellspacing="0">
+        <thead>
+            <tr>
+            <th>Sr No.</th>
+            <th>RLY</th>
+            <th>Location</th>
+
+            <th>Division</th>
+            
+            <th>Draft Inspection Date</th>
+
+           
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in list1 %}
+            <tr>
+           <td>{{forloop.counter}}</td>
+           <td>{{i.zone}}</td>
+           <td>{{i.location}}</td>
+           <td>{{i.division}}</td>
+           <td>{{i.inspected_on|date:"d-m-y" }}</td>
+          
+           
+           <td><button type="button" class="btn btn-success" id="{{i.inspection_no}}" onclick="open_inspection(this)">Open</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+</body>
+<script>
+    $( document ).ready(function() {
+        $('#mytable').DataTable();
+});
+
+
+function open_inspection(e)
+{
+    var ins_id=e.id;
+    window.open("/create_inspection_form?ins_id="+ins_id)
+   
+}
+</script>
+{% endblock %}  

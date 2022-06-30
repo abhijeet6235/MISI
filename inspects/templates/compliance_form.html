@@ -1,0 +1,691 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load static %}
+
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/popper.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/bootstrap.min.css' %}">
+
+<script src="{% static '/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static '/DataTables/datatables.min.js' %}"></script>
+<script src="{% static '/js/dataTables.bootstrap4.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static '/DataTables/datatables.min.css' %}" />
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="{% static '/js/select2.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/select2.min.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="{% static '/js/select2.min.js' %}"></script>
+
+
+<script src="{% static 'js/timepicker.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}" />
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <style>
+      * {
+  box-sizing: border-box;
+}
+      input[type=text]
+      {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 2px 0;
+              display: block;
+              /* border: 1.5px solid rgb(14, 12, 12); */
+              border-radius: 4px;
+              box-sizing: border-box;
+      }
+    
+      input[type=submit] {
+              width: 40%;
+              text-align: center;
+              background-color: #4CAF50;
+              color: rgb(15, 12, 12);
+              padding: 14px 20px;
+              margin: 2px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+      }
+    
+      input[type=submit]:hover {
+              background-color: #45a049;
+              text-align: center;
+      }
+    
+      input[type=button] {
+              width: 30%;
+              text-align: center;
+              background-color: #4CAF50;
+              color: white;
+              padding: 6px 6px;
+              margin: 2px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+      }
+    
+      input[type=button]:hover {
+              background-color: #45a049;
+              text-align: center;
+      }
+      /* #viewbtn{
+        margin-left:1050px;
+      } */
+    
+      .inputtag{
+        height:20px;
+      }
+
+    /* .modal.left .modal-dialog,  
+	.modal.right .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 100%;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+	}
+
+    .modal.left .modal-content,
+	.modal.right .modal-content {
+        width: 100%;
+		height: 100%;
+		overflow-y: auto;
+	}
+	
+
+    .modal.left.fade .modal-dialog{
+		left: -320px;
+		-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+		        transition: opacity 0.3s linear, left 0.3s ease-out;
+	}
+	
+	.modal.left.fade.in .modal-dialog{
+		left: 0;
+	}
+
+	/* .modal.right .modal-body {
+		padding: 15px 15px 80px;
+	} 
+
+    
+	.modal.right.fade .modal-dialog {
+		right: -320px;
+		-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+		        transition: opacity 0.3s linear, right 0.3s ease-out;
+	}
+	
+	.modal.right.fade.in .modal-dialog {
+		right: 0;
+	}
+
+
+	.modal-content {
+		border-radius: 0;
+		border: none;
+	}
+
+	.modal-header {
+		border-bottom-color: #EEEEEE;
+		background-color: #FAFAFA;
+	} */
+    .modal-dialog-full-width {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+
+    }
+
+    .modal-content-full-width  {
+        height: auto !important;
+        min-height: 100% !important;
+        border-radius: 0 !important;
+       
+    }
+
+    .modal-header-full-width  {
+        border-bottom: 0px solid #9ea2a2 !important;
+    }
+
+    .modal-footer-full-width  {
+        border-top: 0px solid #9ea2a2 !important;
+    }
+
+
+  
+    </style>
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Home</a>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Draft Inspection</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Inspections Done</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Pending Compliance</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Closed Complaince</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Pending View</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Pending Reply</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary" onclick="compliance_form()">Reply Sent</button>
+            </li>
+          </ul>
+        </div>
+        <a class="navbar-brand" href="#">Back</a>
+      </nav> -->
+     <h3><center>Compliance Report</center></h3> <br>
+    <div class="container" id="container1" style="margin-bottom:5%;" >
+        <label style="width:7%">Date Range</label>
+        <label id="reportrange" style="background: #fff; cursor: pointer;padding: 5px 10px;border: 1px solid #ccc; width: 23%">
+            
+            <i class="fa fa-calendar"></i>&nbsp;
+            <span></span> <i class="fa fa-caret-down"></i>
+        </label>
+        <label style="width:4%;padding-left:1%">Rly</label>
+        <select style="background: #fff;padding: 5px 10px;border: 1px solid #ccc; width: 12%" name="rly_id" id="rly_id">
+            <option value="" selected>All</option>
+            {% for z in zone %}
+            <option value="{{z}}">{{z}}</option>
+            {% endfor %}
+          </select>
+        <label style="width:4%;padding-left:1%">Div</label>
+        <select style="background: #fff;padding: 5px 10px;border: 1px solid #ccc; width: 12%" name="div_id" id="div_id">
+            <option value="" selected>All</option>
+            {% for z in division %}
+            <option value="{{z}}">{{z}}</option>
+            {% endfor %}
+        </select>  
+        <label style="width:4%;padding-left:1%">Dept</label>
+        <select style="background: #fff;padding: 5px 10px;border: 1px solid #ccc; width: 12%" name="dept_id" id="dept_id">
+            <option value="" selected>All</option>
+            {% for z in dept %}
+            <option value="{{z}}">{{z}}</option>
+            {% endfor %}
+        </select>  
+        <button type="button" id="submit_filter" style="width:7%;margin-left:3%;border: 1px solid #ccc;" class="btn btn-outline-secondary" onclick="compliance_filterdata(this);">Submit</button>
+    </div> 
+    <div class="container">
+        <table id="mytable" class="table table-striped table-bordered table-sm " cellspacing="0">
+        <thead >
+            <th></th>
+        </thead>
+        <tbody >
+
+        </tbody>
+        </table>
+    </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade right" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-full-width" role="document">
+      <div class="modal-content modal-content-full-width">
+        <div class="modal-header modal-header-full-width">
+          <h5 class="modal-title" id="exampleModalLabel">Inspection Report Summary</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-3">
+            <label >Inspection No</label></div> <div class="col-2" ><input type="text" value=""  id="ins_id" readonly class="form-control"/>
+        </div>
+        <div class="col-3">
+            <label>Inspection Officer</label></div><div class="col-2" ><input type="text" value="" id="ins_officer" class="form-control" readonly/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            <label>Inspection Title</label></div> <div class="col-2" ><input type="text" value="" class="form-control" id="ins_title" readonly/>
+        </div>
+        <div class="col-3">
+            <label>Inspection Date</label></div><div class="col-2" ><input type="text" value="" id="ins_date" class="form-control" readonly/>
+        </div>
+        </div>
+    </br>
+            <table id="mytable1" class="table table-striped table-bordered table-lg ">
+                <thead>
+                    <tr><th>Item No</th><th>Observation</th><th>Compliance Status</th><th>Compliance</th></tr>
+                </thead>
+                <tbody>
+                    <!-- <tr><td>1</td><td>assssssssssss</td><td>Pending</td><td><input type="text" id="comp_remarks" name="comp_remarks" maxlength="4" style="height:7%"></td>
+                    <td><button type="button" class="btn btn-primary">Save</button></td></tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer modal-footer-full-width">
+            <button type="button" class="btn btn-primary" onclick="save_data()">Save changes</button> 
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close1">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>    
+
+<!-- Modal -->
+<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel2">List of Replies/Forwards</h4>
+                <button type="button" id="close2" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                
+            </div>
+
+            <div class="modal-body">
+                <input type="text" id="item_no_hidden" hidden value=''/>
+                    <table id="mytable2" class="table table-striped table-bordered table-sm ">
+                    <thead >
+                        <tr>
+                        <th>Recieved</th>
+                        <th>Marked</th>
+                        <th>Reply</th>
+                        <th>Reply Recieved</th>
+                        <th>Merge</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                        
+                      
+                      <tr>
+                      
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                  
+                    </tbody>
+                </table>
+              
+                <div class="form-outline" style="margin:2%">
+                 
+                    <textarea  class="form-control" id="textAreaExample1" rows="4"></textarea>
+                </div>
+                <button style="margin:2%" type="button" class="btn btn-primary"  style="height:7%" onclick="save_reply()">Save</button>
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+
+</body>
+<script>
+    $( document ).ready(function() {
+        $('#container1').hide();
+        compliance_form();
+});
+$('#mytable').hide();
+
+
+function save_data()
+{
+    ins_id=$('#ins_id').val();
+    
+    data={
+        'ins_id':ins_id,
+    }
+    $.ajax({
+                url: "{% url 'save_data' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    console.log('saved');
+                    alert('saved');
+                    $('#close2').click();
+                    $('#close1').click();
+                    // document.getElementById(item_no_id).style.backgroundColor = "lightblue";
+                }
+     })
+}
+function save_reply(e)
+{
+    var item_no=$('#item_no_hidden').val();
+    var item_no_id='//'+item_no;
+    var compliance=$('#textAreaExample1').val();
+    var com_id=item_no+'/';
+    data={
+        'item_no':item_no,
+        'str':'save',
+        'compliance':compliance,
+    }
+    $.ajax({
+                url: "{% url 'compliance_filterdata_ajax' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    console.log('saved');
+                    document.getElementById(com_id).readOnly = true;
+                    document.getElementById(com_id).value = compliance;
+                    document.getElementById(com_id).style.backgroundColor = "lightblue";
+                    document.getElementById(item_no_id).disabled = true;
+                    $('#close2').click();
+                    // document.getElementById(item_no_id).style.backgroundColor = "lightblue";
+                }
+     })
+}
+function reply(e)
+{
+    var inspection_id=e.id;
+    var table = $('#mytable1').DataTable();
+    table.destroy();
+    $('#mytable1').hide();
+    data={
+        'inspection_id':inspection_id,
+        'str':'reply',
+    }
+    $.ajax({
+                url: "{% url 'compliance_filterdata_ajax' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                  idetails=response.idetails;
+                   $('#ins_id').val(idetails[0]['inspection_no']);
+                   $('#ins_officer').val(idetails[0]['inspection_officer']);
+                   $('#ins_title').val(idetails[0]['inspection_title']);
+                   $('#ins_date').val(idetails[0]['inspection_date']);
+                   mydata=response.itemdetails;
+                   let row = "";
+                    let head = `<thead><tr><th>Item No</th>
+                    <th>Observation</th><th>Compliance Remarks</th>
+                        <th>Save</th><th>Edit</th><th>Forward</th><th style="display:none;">View Forward Reply</th></tr></thead>`;
+                    
+                   
+                    for (let i = 0; i < mydata.length; i++) {
+                        alert(mydata[i]['item_no']);
+                        row += "<tr>";    
+                        row += `<td>${mydata[i]['item_no']}</td><td>${mydata[i]['observation']}</td>`;
+                        if(mydata[i]['compliance']==null){
+                            row += ` <td><input type="text" id="${mydata[i]['item_no']}/" name="comp_remarks"  style="height:7%"></td>
+                            <td><button type="button" class="btn btn-primary" id="//${mydata[i]['item_no']}" onclick="save_compliance(this);">Save</button></td>`;
+                        }
+                        else{
+                            row += ` <td><input type="text" id="${mydata[i]['item_no']}/" name="comp_remarks"  style="height:7%;background-Color:lightblue;" value="${mydata[i]['compliance']}" readonly></td>
+                            <td><button type="button" class="btn btn-primary" id="//${mydata[i]['item_no']}" onclick="save_compliance(this);" disabled>Save</button></td>`;
+                        }
+                        // row += `<td><button type="button" class="btn btn-primary" id="///${mydata[i]['item_no']}" onclick="edit_compliance(this);" style="height:7%">Edit</button></td>
+                        // <td style="padding-left:2%;"><a href="{% url 'admin_inspection_form' %}"><i class="fa fa-send-o" style="size:7%"></i></a></td>
+                        // <td style="padding-left:2%;">
+                        //     <a href="/compliance_forward_reply/${mydata[i]['item_no']}"><i class="fa fa-send-o" style="size:7%"></i></a>
+                        //     </td>
+                        // </tr>`;
+                        row += `<td><button type="button" class="btn btn-primary" id="///${mydata[i]['item_no']}" onclick="edit_compliance(this);" style="height:7%">Edit</button></td>
+                        <td style="padding-left:2%;"><a href="/compliance_forward_reply/${mydata[i]['item_no']}"><i class="fa fa-send"  style="size:7%;color: blue"></i></a></td>
+                        <td style="padding-left:2%;display:none;">
+                            <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2" id=",${mydata[i]['item_no']}"onclick="fetch_forward_reply(this)">
+                                <i class="fa fa-send-o" style="size:7%"></i></button>
+                            </td>
+                        </tr>`;
+                    }
+                    
+                    $('#mytable1 thead').remove();
+                    $('#mytable1 tr').remove();
+                    $('#mytable1').append(head);
+                    $('#mytable1 tbody').append(row);
+                    $('#mytable1').show();
+                    $('#mytable1').DataTable();
+                   
+                }
+     })
+}
+
+function fetch_forward_reply(e)
+{
+    var item_no=(e.id).substr(1);
+    var table = $('#mytable2').DataTable();
+    table.destroy();
+    $('#mytable2').hide();
+    data={
+        'item_no':item_no,
+    }
+    $.ajax({
+                url: "{% url 'fetch_forward_reply' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    list1=response.list1;
+                  $('#item_no_hidden').val(response.item_no);
+                   mydata=response.list1;
+                   let row = "";
+                    let head = `<thead><tr><th>Recieved</th><th>Marked</th><th>Reply</th><th>Reply Recieved</th><th>Merge</th></tr></thead>`;
+                    
+                   
+                    for (let i = 0; i < mydata.length; i++) {
+                        alert(mydata[i]['recieved_on']);
+                        row += "<tr>";    
+                        row += `<td>${mydata[i]['recieved_on']}</td><td>${mydata[i]['marked_to_forward']}</td>
+                        <td>${mydata[i]['reply']}</td><td>${mydata[i]['compliance_recieved_on_forward']}</td>
+                        <td><input class="form-check-input" type="checkbox" id="${mydata[i]['reply']}" onchange="merge(this)" id="flexCheckChecked" ></td>`;
+                        row += "</tr>";    
+                    }
+                    
+                    $('#mytable2 thead').remove();
+                    $('#mytable2 tr').remove();
+                    $('#mytable2').append(head);
+                    $('#mytable2 tbody').append(row);
+                    $('#mytable2').show();
+                    $('#mytable2').DataTable();
+                }
+     })
+}
+function merge(e)
+{
+    var val=e.id;
+    if(document.getElementById(val).checked) {
+    
+    var textval=$('#textAreaExample1').val()+' '+val;
+    $('#textAreaExample1').val(textval);
+    }
+}
+
+function edit_compliance(e)
+{
+    var id=e.id;
+    id=id.substr(3);
+    alert(id);
+    var com_id=id+'/';
+    var c_id='//'+id;
+    document.getElementById(com_id).readOnly= false;
+    document.getElementById(com_id).style.backgroundColor = "transparent";
+    // $('#'+com_id).attr('disabled','disabled');
+    document.getElementById(c_id).disabled = false;
+    // $('#'+c_id).attr('disabled','disabled');
+}
+
+function save_compliance(e)
+{
+   
+    var item_no_id=e.id;
+    item_no=item_no_id.substr(2);
+   
+    var com_id=item_no+'/';
+    var compliance=document.getElementById(com_id).value;
+    data={
+        'item_no':item_no,
+        'str':'save',
+        'compliance':compliance,
+    }
+    $.ajax({
+                url: "{% url 'compliance_filterdata_ajax' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    console.log('saved');
+                    alert(com_id);
+                    alert(item_no_id);
+                    document.getElementById(com_id).readOnly = true;
+                    document.getElementById(com_id).style.backgroundColor = "lightblue";
+                    document.getElementById(item_no_id).disabled = true;
+                    // document.getElementById(item_no_id).style.backgroundColor = "lightblue";
+                }
+     })
+}
+
+
+$('#rly_id').change(function() {
+    var rly_id=$('#rly_id').val();
+    
+    data={
+        'rly_id':rly_id,
+        'str':'filter',
+    }
+    $.ajax({
+                url: "{% url 'compliance_filterdata_ajax' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    div=response.div;
+                    $('#div_id').empty();
+                    $('#div_id').append(`<option value="">All</option>`);
+                    for (let i = 0; i < div.length; i++) {
+                    $('#div_id').append(`<option value="${div[i]}">
+                                       ${div[i]}
+                                  </option>`);
+                                }
+                }
+     })
+    
+});
+    function compliance_filterdata(e)
+    {
+        var table = $('#mytable').DataTable();
+        table.destroy();
+        $('#mytable').hide();
+        var str=e.id;
+        alert(str);
+        var data={}
+        if(str=='submit_filter'){
+        var div_id=$('#div_id').val();
+        var rly_id=$('#rly_id').val();
+        var dept_id=$('#dept_id').val();
+        var d=$('#reportrange').data('daterangepicker').startDate;
+        var startDate = new Date(d);
+        startDate= startDate.getFullYear()+ '-' + (startDate.getMonth()+1) + '-' + startDate.getDate()
+        d=$('#reportrange').data('daterangepicker').endDate;
+        var endDate = new Date(d);
+        endDate=endDate.getFullYear() + '-' +(endDate.getMonth()+1) + '-' + endDate.getDate()
+        
+        data={
+            'div_id':div_id,
+            'rly_id':rly_id,
+            'startDate':startDate,
+            'endDate': endDate,
+            'dept_id':dept_id,
+        }
+        }
+        $.ajax({
+                url: "{% url 'compliance_filterdata' %}",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+                data: data,
+                success: function (response) {
+                    let mydata = response.inspect_details;
+                    alert(mydata[0]['sr_no']);
+                    let row = "";
+                    let head = `<thead><tr><th>Sr.No</th><th style="display:none;"></th>
+                    <th>Inspection Title</th><th>Inspected By</th>
+                        <th>Inspected On</th><th>Viewed On</th>
+                        <th>View</th><th>Reply</th></tr></thead>`;
+                    
+                   
+                    for (let i = 0; i < mydata.length; i++) {
+                        
+                        row += "<tr>";
+                        row += `<td>${mydata[i]['sr_no']}</td><td style="display:none;">${mydata[i]['inspection_no']}</td><td>${mydata[i]['inspection_title']}</td>
+                        <td>${mydata[i]['inspection_officer']}</td><td>${mydata[i]['inspected_on']}</td>
+                        <td>${mydata[i]['viewed_on']}</td><td><a href="/media${mydata[i]['file_path']}">View</a></td>
+                        <td><button type="button" data-toggle="modal" data-target="#exampleModal" id="${mydata[i]['inspection_no']}" onclick="reply(this)">Reply</button></td>`;
+                        row += "</tr>";
+                    }
+                    
+                    $('#mytable thead').remove();
+                    $('#mytable tr').remove();
+                    $('#mytable').append(head);
+                    $('#mytable tbody').append(row);
+                    $('#mytable').show();
+                    $('#mytable').DataTable();
+                }
+            })
+    }
+    function compliance_form()
+    {
+        $('#container1').show();
+        var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+
+    $('#reportrange').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+    }
+</script>
+
+
+{% endblock %}  
